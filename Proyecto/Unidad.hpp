@@ -11,14 +11,14 @@ class Unidad{
 
     public:
     Unidad();
-    Unidad(int v, int s, int a, int n);
-    void setVida();
+    Unidad(int vida, int ataque, int nivel);
+    void setVida(int vida);
     int getVida();
-    void setSalud();
+    void setSalud(int salud);
     int getSalud();
-    void setAtaque();
+    void setAtaque(int ataque);
     int getAtaque();
-    void setNivel();
+    void setNivel(int nivel);
     int getNivel();
     int porcentajeSalud();
     void imprimeBarra();
