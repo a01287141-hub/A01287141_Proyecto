@@ -1,6 +1,6 @@
 # Unidad de Combate
 
-Clase que representa una unidad básica de combate para un juego de estrategia.
+Clase que representa base de unidad para personajes para juego
 
 ## UML
 
