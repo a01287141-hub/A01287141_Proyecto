@@ -109,7 +109,7 @@ void Unidad::imprimir() {
     cout << "Salud actual: " << salud << endl;
     cout << "Ataque      : " << ataque << endl;
     cout << "Nivel       : " << nivel << endl;
-    cout << "Salud (%)   : " << porcentajeSalud() << "%" << endl;
+    cout << "Porcentaje de salud : " << porcentajeSalud() << "%" << endl;
     cout << "Barra       : ";
 
     imprimeBarra();
