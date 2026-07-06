@@ -1,4 +1,5 @@
 #include "Unidad.hpp"
+#include <cstdlib> //librería para randomizer
 
 using namespace std;
 
@@ -76,3 +77,40 @@ void Unidad::imprimeBarra(){
     cout<<endl;
 }
 
+int Unidad::calculaAtaque(Unidad& objetivo){
+    int mitad = ataque / 2;
+
+    if (mitad < 1)
+        mitad = 1;
+
+    if (objetivo.getNivel() > nivel) {
+        return (rand()%mitad) + 1;
+    } else {
+        return rand()%(ataque - mitad + 1) + mitad;
+    }
+}
+
+void Unidad::recibeAtaque(int ptosAtaque){
+    salud -= ptosAtaque;
+    if (salud<0){
+        salud=0;
+    }
+}
+
+void Unidad::atacar(Unidad& objetivo){
+    int danoAtaque = calculaAtaque(objetivo);
+
+    objetivo.recibeAtaque(danoAtaque);
+}
+
+void Unidad::imprimir() {
+
+    cout << "Vida maxima : " << vida << endl;
+    cout << "Salud actual: " << salud << endl;
+    cout << "Ataque      : " << ataque << endl;
+    cout << "Nivel       : " << nivel << endl;
+    cout << "Salud (%)   : " << porcentajeSalud() << "%" << endl;
+    cout << "Barra       : ";
+
+    imprimeBarra();
+}
