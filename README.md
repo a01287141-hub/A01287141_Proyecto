@@ -1,25 +1,27 @@
-# Ejercicios - Básicos
+# Unidad de Combate
 
-Ubíquese en la **carpeta fuente del proyecto** deseado, use:
+Clase que representa una unidad básica de combate para un juego de estrategia.
 
-```
-cd <assignments/NombreCarpeta>
+## UML
 
-Ej.- cd assignments/Proyecto
+```mermaid
+classDiagram
 
-```
-Regresar a una **carpeta anterior**, use:
+class Unidad{
 
-```
-Ej.- cd ../
+- int vida
+- int salud
+- int ataque
+- int nivel
 
-```
++ porcentajeSalud() int
++ imprimeBarra() void
++ calculaAtaque(Unidad&) int
++ recibeAtaque(int) void
++ atacar(Unidad&) void
++ imprimir() void
 
-Regrese a la **carpeta fuente inical, como está cuando cargas el codespace**, use:
-
-```
-Ej.- cd ../../
-
+}
 ```
 
 
