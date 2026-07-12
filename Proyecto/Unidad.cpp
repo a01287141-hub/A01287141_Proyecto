@@ -12,6 +12,7 @@ Unidad::Unidad() {
 
 Unidad::Unidad(int vida, int ataque, int nivel) {
     this->vida=vida;
+    this->salud=vida;
     this->ataque=ataque;
     this->nivel=nivel;
 }
