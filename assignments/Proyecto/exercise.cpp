@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <cstdlib> // librería para randomizer
 #include <ctime> // randomizar diferentes números en cada ejecución
 #include "Unidad.hpp"
@@ -12,27 +13,53 @@ int main() {
 
     srand(time(nullptr));
 
-    Guerrero guerrero(120,30,3,10);
-    Arquero arquero(90,20,2,35);
-    Mago mago(80,25,4,100);
-    
-    guerrero.imprimir();
-    arquero.imprimir();
-    mago.imprimir();
-    cout << "El guerrero ataca al mago" << endl;
-    guerrero.atacar(mago);
-    
-    cout << "El arquero ataca al guerrero" << endl;
-    arquero.atacar(guerrero);
-    
-    cout << "El mago ataca al arquero" << endl;
-    mago.atacar(arquero);
-    
-    cout << "Estados finales" << endl;
-    
-    guerrero.imprimir();
-    arquero.imprimir();
-    mago.imprimir();
+    vector<Unidad*> ejercito;
+
+    ejercito.push_back(new Guerrero(120, 30, 3, 20));
+    ejercito.push_back(new Arquero(90, 25, 2, 80));
+    ejercito.push_back(new Mago(80, 35, 4, 100));
+
+    cout << "Personajes existentes" << endl;
+
+    for (Unidad* personaje : ejercito) {
+        cout << *personaje << endl;
+    }
+
+    cout << "Batallas" << endl;
+
+    cout << "Guerrero ataca al Arquero" << endl;
+    ejercito[0]->atacar(*ejercito[1]);
+
+    cout << "Estado del Arquero:" <<endl;
+    cout << *ejercito[1] << endl;
+
+    cout << "Guerrero ataca al Mago" << endl;
+    ejercito[0]->atacar(*ejercito[2]);
+
+    cout << "Estado del Mago:" << endl;
+    cout << *ejercito[2] << endl;
+
+    cout << "Arquero ataca al Guerrero" << endl;
+    ejercito[1]->atacar(*ejercito[0]);
+
+    cout << "Estado del Guerrero:" << endl;
+    cout << *ejercito[0] << endl;
+
+    cout << "Mago ataca al Guerrero" << endl;
+    ejercito[2]->atacar(*ejercito[0]);
+
+    cout << "Estado del Guerrero:" << endl;
+    cout << *ejercito[0] << endl;
+
+    cout << "========== ESTADO FINAL ==========" << endl;
+
+    for (Unidad* personaje : ejercito) {
+        cout << *personaje << endl;
+    }
+
+    for (Unidad* personaje : ejercito) {
+        delete personaje;
+    }
 
     return 0;
 }

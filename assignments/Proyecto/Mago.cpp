@@ -12,7 +12,7 @@ Mago::Mago(int vida, int ataque, int nivel, int mana) : Unidad(vida, ataque, niv
     this->mana = mana;
 }
 
-int Mago::getMana(){
+int Mago::getMana() const{
     return mana;
 }
 
@@ -47,10 +47,32 @@ void Mago::recibeAtaque(int ptosAtaque){
         ptosAtaque /= 2;
     }
     Unidad::recibeAtaque(ptosAtaque);
+
+    if(getSalud()==0){
+        revive();
+    }
+    
 }
 
-void Mago::imprimir(){
-    Unidad::imprimir();
-    cout << "Mana: " << mana << endl;
-    cout << " " << endl;
+void Mago::revive(){
+
+    if(getSalud() == 0 && mana >= 50){
+
+        cout<<"El Mago revivió (-50 de maná)." << endl;
+
+        setSalud(getVida()/2);
+
+        mana-=50;
+    }
+    else{
+
+        cout<<"El Mago ha muerto." << endl;
+    }
+}
+
+void Mago::imprimir(ostream& os) const{
+
+    Unidad::imprimir(os);
+
+    os<<"Mana: "<<mana<<endl;
 }

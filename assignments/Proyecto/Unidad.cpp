@@ -17,19 +17,19 @@ Unidad::Unidad(int vida, int ataque, int nivel) {
     this->nivel=nivel;
 }
 
-int Unidad::getVida(){
+int Unidad::getVida() const{
     return vida;
 }
 
-int Unidad::getAtaque(){
+int Unidad::getAtaque() const{
     return ataque;
 }
 
-int Unidad::getNivel(){
+int Unidad::getNivel() const{
     return nivel;
 }
 
-int Unidad::getSalud(){
+int Unidad::getSalud() const{
     return salud;
 }
 
@@ -57,7 +57,7 @@ void Unidad::setNivel(int nivel){
     this->nivel=nivel;
 }
 
-int Unidad::porcentajeSalud(){
+int Unidad::porcentajeSalud() const{
     int porcentaje = 0;
     porcentaje = (salud*100)/vida;
     return porcentaje;
@@ -104,7 +104,7 @@ void Unidad::atacar(Unidad& objetivo){
     objetivo.recibeAtaque(danoAtaque);
 }
 
-void Unidad::imprimir() {
+void Unidad::imprimir(ostream& os) const {
 
     cout << "Vida maxima : " << vida << endl;
     cout << "Salud actual: " << salud << endl;
@@ -113,5 +113,23 @@ void Unidad::imprimir() {
     cout << "Porcentaje de salud : " << porcentajeSalud() << "%" << endl;
     cout << "Barra       : ";
 
-    imprimeBarra();
+    int porcentaje = porcentajeSalud();
+    int barras = porcentaje/5;
+
+    for (int i = 0; i < barras;i++){
+        cout<<"%";
+    }
+
+    for (int i = barras; i < 20; i++){
+        cout<<"=";
+    }
+
+    cout<<endl;
+}
+
+ostream& operator<<(ostream& os, const Unidad& u){
+
+    u.imprimir(os);
+
+    return os;
 }

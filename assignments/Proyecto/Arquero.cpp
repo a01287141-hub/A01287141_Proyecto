@@ -12,7 +12,7 @@ Arquero::Arquero(int vida, int ataque, int nivel, int precision) : Unidad (vida,
     this->precision = precision;
 }
 
-int Arquero::getPrecision(){
+int Arquero::getPrecision() const{
     return precision;
 }
 
@@ -34,9 +34,34 @@ int Arquero::calculaAtaque(Unidad& objetivo){
     return dano;
 }
 
-void Arquero::imprimir(){
-    Unidad::imprimir();
+void Arquero::recibeAtaque(int ptosAtaque) {
 
-    cout << "Precision: " << precision << "%" << endl;
-    cout << " " << endl;
+    Unidad::recibeAtaque(ptosAtaque);
+
+    if (getSalud() == 0) {
+        revive();
+    }
+}
+
+void Arquero::imprimir(ostream& os) const{
+
+    Unidad::imprimir(os);
+
+    os<<"Precision: "<<precision<<endl;
+}
+
+void Arquero::revive(){
+
+    if(getSalud() == 0 && precision >= 80){
+
+        cout << "El Arquero ha revivido ( -40 de precisión)." << endl;
+
+        setSalud(getVida()/3);
+
+        precision-=40;
+    }
+    else{
+
+        cout<<"El Arquero ha muerto." << endl;
+    }
 }

@@ -12,8 +12,8 @@ public:
     Guerrero(int vida, int ataque, int nivel, int fuerza);
     int getFuerza() const;
     void setFuerza(int fuerza);
-    int calculaAtaque(Unidad& objetivo);
-    void recibeAtaque(int ptosAtaque);
-    void imprimir();
-
+    int calculaAtaque(Unidad& objetivo) override;
+    void recibeAtaque(int ptosAtaque) override;
+    void imprimir(ostream& os) const override;
+    void revive() override;
 };

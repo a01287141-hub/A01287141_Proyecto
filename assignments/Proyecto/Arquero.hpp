@@ -9,8 +9,10 @@ class Arquero : public Unidad {
     public:
         Arquero();
         Arquero(int vida, int ataque, int nivel, int precision);
-        int getPrecision();
+        int getPrecision() const;
         void setPrecision(int precision);
-        int calculaAtaque(Unidad& objetivo);
-        void imprimir();
+        int calculaAtaque(Unidad& objetivo) override;
+        void recibeAtaque(int ptosAtaque) override;
+        void imprimir(ostream& os) const override;
+        void revive() override;
 };

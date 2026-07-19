@@ -35,8 +35,25 @@ void Guerrero::recibeAtaque(int ptosAtaque){
     Unidad::recibeAtaque(ptosAtaque);
 }
 
-void Guerrero::imprimir(){
-    Unidad::imprimir();
-    cout << "Fuerza: " << fuerza << endl;
-    cout << " " << endl;
+void Guerrero::revive(){
+
+    if(getSalud() == 0 && fuerza >= 20){
+
+        cout << "El Guerrero revive (-20 de fuerza)." << endl;
+
+        setSalud(getVida()/2);
+
+        fuerza -= 20;
+    }
+    else{
+
+        cout << "El Guerrero ha muerto." << endl;
+    }
+}
+
+void Guerrero::imprimir(ostream& os) const{
+
+    Unidad::imprimir(os);
+
+    os<<"Fuerza: "<<fuerza<<endl;
 }
