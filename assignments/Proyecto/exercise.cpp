@@ -51,7 +51,7 @@ int main() {
     cout << "Estado del Guerrero:" << endl;
     cout << *ejercito[0] << endl;
 
-    cout << "========== ESTADO FINAL ==========" << endl;
+    cout << "-----Status-----" << endl;
 
     for (Unidad* personaje : ejercito) {
         cout << *personaje << endl;
